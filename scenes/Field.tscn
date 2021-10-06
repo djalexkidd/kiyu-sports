@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Kiyu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/backgrounds/0000.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/PressStart.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/Stopwatch.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Field.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 3 )
+
+[node name="Field" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Kiyu" parent="." instance=ExtResource( 1 )]
+position = Vector2( 225, 608 )
+
+[node name="Stopwatch" type="Label" parent="."]
+margin_left = 632.0
+margin_top = 83.0
+margin_right = 760.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "8 88"
+align = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speed" type="Label" parent="."]
+margin_left = 947.0
+margin_top = 460.0
+margin_right = 1136.0
+margin_bottom = 500.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Speed"]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="Speed/Timer" to="." method="_on_Timer_timeout"]
