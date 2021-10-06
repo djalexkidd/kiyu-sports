@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="godot-party"
-run/main_scene="res://scenes/Field.tscn"
+run/main_scene="res://scenes/NameEntry.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://scripts/global.gd"
 
 [display]
 
