@@ -130,6 +130,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="EventStartSound" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
 [connection signal="body_exited" from="Finish" to="HUD/Stopwatch" method="_on_Finish_body_exited"]
 [connection signal="results" from="HUD/Stopwatch" to="." method="_on_Stopwatch_results"]
 [connection signal="timeout" from="HUD/Speed/Timer" to="." method="_on_Timer_timeout"]
