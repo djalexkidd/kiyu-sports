@@ -1,11 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/NameEntry.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/PressStart.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/characters/kiyu/walk.1.png" type="Texture" id=3]
+[ext_resource path="res://assets/sounds/menu.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/characters/kiyu/walk.0.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/kiyu/walk.2.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 96
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="NameEntry" type="Control"]
 anchor_right = 1.0
@@ -33,6 +49,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Author" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -272.0
+margin_top = -32.0
+margin_right = 272.0
+custom_fonts/font = SubResource( 3 )
+text = "2021 - djalexkidd"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="LineEdit" type="LineEdit" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -48,5 +79,15 @@ placeholder_text = "Your Name"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 640, 576 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 2 )
+playing = true
+
+[node name="Musique" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
 
 [connection signal="text_entered" from="LineEdit" to="." method="_on_LineEdit_text_entered"]
