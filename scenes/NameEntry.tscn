@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/NameEntry.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/PressStart.ttf" type="DynamicFontData" id=2]
@@ -11,11 +11,11 @@
 size = 96
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 2 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ) ],
 "loop": true,
@@ -23,10 +23,13 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 2 )
+
 [node name="NameEntry" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -35,6 +38,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameName" type="Label" parent="."]
 anchor_left = 0.5
@@ -57,7 +63,7 @@ anchor_bottom = 1.0
 margin_left = -272.0
 margin_top = -32.0
 margin_right = 272.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "2021 - djalexkidd"
 align = 1
 __meta__ = {
@@ -76,6 +82,7 @@ margin_bottom = 12.0
 align = 1
 max_length = 10
 placeholder_text = "Your Name"
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -83,11 +90,28 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 640, 576 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 playing = true
 
 [node name="Musique" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
 
-[connection signal="text_entered" from="LineEdit" to="." method="_on_LineEdit_text_entered"]
+[node name="PlayButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -86.0
+margin_top = 77.0
+margin_right = 86.0
+margin_bottom = 115.0
+custom_fonts/font = SubResource( 4 )
+text = "JOUER"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="text_entered" from="LineEdit" to="LineEdit" method="_on_LineEdit_text_entered"]
+[connection signal="pressed" from="PlayButton" to="LineEdit" method="_on_PlayButton_pressed"]

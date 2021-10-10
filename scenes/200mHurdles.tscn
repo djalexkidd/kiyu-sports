@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Name.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Stopwatch.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/backgrounds/HUD_speedmeter.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/0001.png" type="Texture" id=8]
 [ext_resource path="res://scenes/Hurdle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/sounds/event_start.mp3" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1280, 16 )
@@ -27,6 +28,9 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 320, 360 )
 
 [node name="200mHurdles" type="Node2D"]
 script = ExtResource( 4 )
@@ -129,6 +133,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD"]
+shape = SubResource( 6 )
+action = "fire"
+visibility_mode = 1
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="HUD"]
+position = Vector2( 640, 0 )
+shape = SubResource( 6 )
+action = "jump"
+visibility_mode = 1
+
 [node name="Hurdle" parent="." instance=ExtResource( 9 )]
 position = Vector2( 536, 634 )
 
@@ -143,6 +158,10 @@ position = Vector2( 1880, 634 )
 
 [node name="Hurdle5" parent="." instance=ExtResource( 9 )]
 position = Vector2( 2328, 634 )
+
+[node name="EventStartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
 
 [connection signal="body_exited" from="Finish" to="HUD/Stopwatch" method="_on_Finish_body_exited"]
 [connection signal="results" from="HUD/Stopwatch" to="." method="_on_Stopwatch_results"]

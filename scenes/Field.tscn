@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Kiyu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/backgrounds/0000.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/backgrounds/HUD1.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/0000_p2.png" type="Texture" id=8]
 [ext_resource path="res://assets/backgrounds/HUD_speedmeter.png" type="Texture" id=9]
+[ext_resource path="res://assets/sounds/event_start.mp3" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 592, 16 )
@@ -27,6 +28,9 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 640, 360 )
 
 [node name="Field" type="Node2D"]
 script = ExtResource( 5 )
@@ -130,7 +134,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HUD"]
+shape = SubResource( 6 )
+action = "fire"
+visibility_mode = 1
+
 [node name="EventStartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 autoplay = true
 
 [connection signal="body_exited" from="Finish" to="HUD/Stopwatch" method="_on_Finish_body_exited"]
