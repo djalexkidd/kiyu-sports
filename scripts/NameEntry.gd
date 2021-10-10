@@ -6,6 +6,8 @@ var set_position = true
 var global_position
 
 func _on_LineEdit_text_entered(new_text):
+	if text == "":
+		text = "kiyu"
 	Global.username = text
 	get_tree().change_scene("res://scenes/Field.tscn")
 
