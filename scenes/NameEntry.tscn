@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://scripts/NameEntry.gd" type="Script" id=1]
+[ext_resource path="res://scripts/LineEdit.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/PressStart.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/characters/kiyu/walk.1.png" type="Texture" id=3]
 [ext_resource path="res://assets/sounds/menu.mp3" type="AudioStream" id=4]
 [ext_resource path="res://assets/characters/kiyu/walk.0.png" type="Texture" id=5]
 [ext_resource path="res://assets/characters/kiyu/walk.2.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/roblox/walk3.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/roblox/walk2.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/roblox/walk1.png" type="Texture" id=9]
+[ext_resource path="res://scripts/NameEntry.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 96
@@ -15,21 +19,27 @@ font_data = ExtResource( 2 )
 size = 32
 font_data = ExtResource( 2 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "roblox",
+"speed": 5.0
 } ]
-
-[sub_resource type="DynamicFont" id=4]
-size = 32
-font_data = ExtResource( 2 )
 
 [node name="NameEntry" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -87,16 +97,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 640, 576 )
-scale = Vector2( 4, 4 )
-frames = SubResource( 3 )
-playing = true
-
-[node name="Musique" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-autoplay = true
-
 [node name="PlayButton" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -106,12 +106,55 @@ margin_left = -86.0
 margin_top = 77.0
 margin_right = 86.0
 margin_bottom = 115.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "JOUER"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PreviousCharButton" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 492.0
+margin_top = -160.0
+margin_right = 536.0
+margin_bottom = -122.0
+custom_fonts/font = SubResource( 3 )
+text = "<"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextCharButton" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -532.0
+margin_top = -160.0
+margin_right = -488.0
+margin_bottom = -122.0
+custom_fonts/font = SubResource( 3 )
+text = ">"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 640, 576 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+
+[node name="Musique" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
 [connection signal="text_entered" from="LineEdit" to="LineEdit" method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="PlayButton" to="LineEdit" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="PreviousCharButton" to="." method="_on_PreviousCharButton_pressed"]
+[connection signal="pressed" from="NextCharButton" to="." method="_on_NextCharButton_pressed"]

@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/Name.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Stopwatch.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/PressStart.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://scripts/Field.gd" type="Script" id=4]
+[ext_resource path="res://scripts/200mHurdles.gd" type="Script" id=4]
 [ext_resource path="res://assets/backgrounds/HUD1.png" type="Texture" id=5]
-[ext_resource path="res://scenes/Kiyu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/backgrounds/HUD_speedmeter.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/0001.png" type="Texture" id=8]
 [ext_resource path="res://scenes/Hurdle.tscn" type="PackedScene" id=9]
@@ -47,15 +46,6 @@ texture = ExtResource( 8 )
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 640, 386 )
 texture = ExtResource( 8 )
-
-[node name="Kiyu" parent="." instance=ExtResource( 6 )]
-position = Vector2( 225, 608 )
-allow_jump = true
-
-[node name="Camera2D" type="Camera2D" parent="Kiyu"]
-current = true
-limit_left = 0
-limit_bottom = 720
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 512, 672 )
