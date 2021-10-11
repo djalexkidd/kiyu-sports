@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	refresh_char()
+
 func _on_NextCharButton_pressed():
 	Global.character += 1
 	refresh_char()

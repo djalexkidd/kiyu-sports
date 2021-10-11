@@ -25,14 +25,14 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "roblox",
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "1",
 "speed": 5.0
 } ]
 
@@ -102,12 +102,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -86.0
-margin_top = 77.0
-margin_right = 86.0
-margin_bottom = 115.0
+margin_left = -344.0
+margin_top = 80.0
+margin_right = -172.0
+margin_bottom = 118.0
 custom_fonts/font = SubResource( 3 )
-text = "JOUER"
+text = "100M"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton2" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 136.0
+margin_top = 80.0
+margin_right = 468.0
+margin_bottom = 118.0
+custom_fonts/font = SubResource( 3 )
+text = "200M Haies"
 flat = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -147,6 +163,7 @@ __meta__ = {
 position = Vector2( 640, 576 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 4 )
+animation = "1"
 frame = 1
 playing = true
 
@@ -154,7 +171,7 @@ playing = true
 stream = ExtResource( 4 )
 autoplay = true
 
-[connection signal="text_entered" from="LineEdit" to="LineEdit" method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="PlayButton" to="LineEdit" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="PlayButton2" to="LineEdit" method="_on_PlayButton2_pressed"]
 [connection signal="pressed" from="PreviousCharButton" to="." method="_on_PreviousCharButton_pressed"]
 [connection signal="pressed" from="NextCharButton" to="." method="_on_NextCharButton_pressed"]

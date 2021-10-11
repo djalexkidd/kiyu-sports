@@ -5,11 +5,10 @@ var actual_resolution = OS.get_window_size()
 var set_position = true
 var global_position
 
-func _on_LineEdit_text_entered(new_text):
+func name_apply(new_text):
 	if text == "":
 		text = "kiyu"
 	Global.username = text
-	get_tree().change_scene("res://scenes/Field.tscn")
 
 func reposition():
 	var target_y
@@ -27,4 +26,9 @@ func _process(delta):
 	reposition()
 
 func _on_PlayButton_pressed():
-	_on_LineEdit_text_entered(text)
+	name_apply(text)
+	get_tree().change_scene("res://scenes/Field.tscn")
+
+func _on_PlayButton2_pressed():
+	name_apply(text)
+	get_tree().change_scene("res://scenes/200mHurdles.tscn")
