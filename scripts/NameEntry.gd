@@ -1,13 +1,23 @@
 extends Control
 
 func _on_NextCharButton_pressed():
-	Global.character = 2
-	$AnimatedSprite.play("roblox")
-	$AnimatedSprite.scale.x = 1.5
-	$AnimatedSprite.scale.y = 1.5
+	Global.character += 1
+	refresh_char()
 
 func _on_PreviousCharButton_pressed():
-	Global.character = 1
-	$AnimatedSprite.play("default")
-	$AnimatedSprite.scale.x = 4
-	$AnimatedSprite.scale.y = 4
+	Global.character -= 1
+	refresh_char()
+
+func refresh_char():
+	$AnimatedSprite.play(str(Global.character))
+	if Global.character > 2:
+		Global.character -= 1
+	elif Global.character < 1:
+		Global.character += 1
+	
+	if Global.character == 2:
+		$AnimatedSprite.scale.x = 1.5
+		$AnimatedSprite.scale.y = 1.5
+	else:
+		$AnimatedSprite.scale.x = 4
+		$AnimatedSprite.scale.y = 4
