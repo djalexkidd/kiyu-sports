@@ -3,19 +3,19 @@
 [ext_resource path="res://scripts/Name.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Archery.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/PressStart.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://scripts/Stopwatch.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Time.gd" type="Script" id=4]
 [ext_resource path="res://assets/sounds/event_start.mp3" type="AudioStream" id=5]
 [ext_resource path="res://assets/backgrounds/HUD1.png" type="Texture" id=6]
 [ext_resource path="res://assets/props/target.png" type="Texture" id=7]
 [ext_resource path="res://scripts/Target.gd" type="Script" id=8]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.0001, 80 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 10 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 3 )
 
@@ -66,19 +66,19 @@ texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Target"]
 position = Vector2( 1226, 490 )
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="down_wall" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="down_wall"]
 position = Vector2( 1220, 730 )
-shape = SubResource( 7 )
+shape = SubResource( 2 )
 
 [node name="up_wall" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="up_wall"]
 position = Vector2( 1220, 266 )
-shape = SubResource( 7 )
+shape = SubResource( 2 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -90,12 +90,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stopwatch" type="Label" parent="HUD"]
+[node name="Time" type="Label" parent="HUD"]
 margin_left = 632.0
 margin_top = 83.0
 margin_right = 760.0
 margin_bottom = 115.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 0, 1 )
 text = "8 88"
 align = 2
@@ -103,6 +103,11 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="Timer" parent="HUD/Time"]
+wait_time = 31.0
+one_shot = true
+autostart = true
 
 [node name="Name" type="Label" parent="HUD"]
 margin_left = 132.0
@@ -127,4 +132,4 @@ visibility_mode = 1
 stream = ExtResource( 5 )
 autoplay = true
 
-[connection signal="results" from="HUD/Stopwatch" to="." method="_on_Stopwatch_results"]
+[connection signal="timeout" from="HUD/Time/Timer" to="HUD/Time" method="_on_Timer_timeout"]
