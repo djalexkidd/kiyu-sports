@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/Name.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Archery.gd" type="Script" id=2]
@@ -8,12 +8,41 @@
 [ext_resource path="res://assets/backgrounds/HUD1.png" type="Texture" id=6]
 [ext_resource path="res://assets/props/target.png" type="Texture" id=7]
 [ext_resource path="res://scripts/Target.gd" type="Script" id=8]
+[ext_resource path="res://assets/props/arrow.png" type="Texture" id=9]
+[ext_resource path="res://scripts/Arrow.gd" type="Script" id=10]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1.00002, 2 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 14.0001, 80 )
+extents = Vector2( 2, 80 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 0, 12 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 0, 24 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 0, 36 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 0, 48 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 0, 60 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 0, 68 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 0, 80 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20, 10 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 4, 222 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -56,6 +85,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Arrow" type="KinematicBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="Arrow"]
+position = Vector2( 192, 512 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arrow"]
+position = Vector2( 217, 512 )
+shape = SubResource( 6 )
+
 [node name="Target" type="KinematicBody2D" parent="."]
 script = ExtResource( 8 )
 
@@ -65,8 +108,64 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Target"]
-position = Vector2( 1226, 490 )
+position = Vector2( 1238, 490 )
 shape = SubResource( 1 )
+
+[node name="100pts" type="Area2D" parent="Target"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/100pts"]
+position = Vector2( 1214, 490 )
+shape = SubResource( 7 )
+
+[node name="70pts" type="Area2D" parent="Target"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/70pts"]
+position = Vector2( 1218, 490 )
+shape = SubResource( 10 )
+
+[node name="50pts" type="Area2D" parent="Target"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/50pts"]
+position = Vector2( 1222, 490 )
+shape = SubResource( 8 )
+
+[node name="30pts" type="Area2D" parent="Target"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/30pts"]
+position = Vector2( 1226, 490 )
+shape = SubResource( 11 )
+
+[node name="20pts" type="Area2D" parent="Target"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/20pts"]
+position = Vector2( 1230, 490 )
+shape = SubResource( 13 )
+
+[node name="10pts" type="Area2D" parent="Target"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/10pts"]
+position = Vector2( 1234, 490 )
+shape = SubResource( 9 )
+
+[node name="5pts" type="Area2D" parent="Target"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/5pts"]
+position = Vector2( 1238, 490 )
+shape = SubResource( 12 )
 
 [node name="down_wall" type="StaticBody2D" parent="."]
 
@@ -79,6 +178,14 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="up_wall"]
 position = Vector2( 1220, 266 )
 shape = SubResource( 2 )
+
+[node name="Miss" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Miss"]
+position = Vector2( 1284, 498 )
+shape = SubResource( 14 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -123,6 +230,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Score" type="Label" parent="HUD"]
+margin_left = 452.0
+margin_top = 30.0
+margin_right = 484.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 1, 0.984314, 1 )
+text = "0"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TouchScreenButton" type="TouchScreenButton" parent="HUD"]
 shape = SubResource( 5 )
 action = "fire"
@@ -132,4 +252,12 @@ visibility_mode = 1
 stream = ExtResource( 5 )
 autoplay = true
 
+[connection signal="body_entered" from="Target/100pts" to="Arrow" method="_on_100pts_body_entered"]
+[connection signal="body_entered" from="Target/70pts" to="Arrow" method="_on_70pts_body_entered"]
+[connection signal="body_entered" from="Target/50pts" to="Arrow" method="_on_50pts_body_entered"]
+[connection signal="body_entered" from="Target/30pts" to="Arrow" method="_on_30pts_body_entered"]
+[connection signal="body_entered" from="Target/20pts" to="Arrow" method="_on_20pts_body_entered"]
+[connection signal="body_entered" from="Target/10pts" to="Arrow" method="_on_10pts_body_entered"]
+[connection signal="body_entered" from="Target/5pts" to="Arrow" method="_on_5pts_body_entered"]
+[connection signal="body_entered" from="Miss" to="Arrow" method="_on_Miss_body_entered"]
 [connection signal="timeout" from="HUD/Time/Timer" to="HUD/Time" method="_on_Timer_timeout"]
