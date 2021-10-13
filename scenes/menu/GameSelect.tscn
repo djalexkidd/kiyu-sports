@@ -1,0 +1,157 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scripts/menu/LineEdit.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters/roblox/walk1.png" type="Texture" id=2]
+[ext_resource path="res://assets/characters/roblox/walk2.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/PressStart.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scripts/menu/GameSelect.gd" type="Script" id=6]
+[ext_resource path="res://assets/characters/kiyu/walk.1.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/kiyu/walk.0.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/kiyu/walk.2.png" type="Texture" id=9]
+[ext_resource path="res://assets/characters/roblox/walk3.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 5 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 5 )
+
+[node name="GameSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -182.5
+margin_top = 206.0
+margin_right = 182.5
+margin_bottom = 230.0
+align = 1
+max_length = 10
+placeholder_text = "Nom"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -182.0
+margin_top = -89.0
+margin_right = 182.0
+margin_bottom = 89.0
+custom_constants/separation = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+margin_right = 364.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 1 )
+text = "100M"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton2" type="Button" parent="VBoxContainer"]
+margin_top = 70.0
+margin_right = 364.0
+margin_bottom = 108.0
+custom_fonts/font = SubResource( 1 )
+text = "200M Haies"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton3" type="Button" parent="VBoxContainer"]
+margin_top = 140.0
+margin_right = 364.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 1 )
+text = "Tir à l'arc"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousCharButton" type="Button" parent="."]
+margin_left = 112.0
+margin_top = 560.0
+margin_right = 156.0
+margin_bottom = 600.0
+custom_fonts/font = SubResource( 1 )
+text = "<"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextCharButton" type="Button" parent="."]
+margin_left = 368.0
+margin_top = 560.0
+margin_right = 412.0
+margin_bottom = 600.0
+custom_fonts/font = SubResource( 1 )
+text = ">"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 260, 576 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 2 )
+animation = "1"
+frame = 2
+playing = true
+
+[node name="BackButton" type="Button" parent="."]
+margin_right = 156.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 3 )
+text = "RETOUR"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="LineEdit" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton2" to="LineEdit" method="_on_PlayButton2_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton3" to="LineEdit" method="_on_PlayButton3_pressed"]
+[connection signal="pressed" from="PreviousCharButton" to="." method="_on_PreviousCharButton_pressed"]
+[connection signal="pressed" from="NextCharButton" to="." method="_on_NextCharButton_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
