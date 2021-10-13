@@ -27,12 +27,12 @@ func _process(delta):
 
 func _on_PlayButton_pressed():
 	name_apply(text)
-	get_tree().change_scene("res://scenes/Field.tscn")
+	get_tree().change_scene("res://scenes/games/Field.tscn")
 
 func _on_PlayButton2_pressed():
 	name_apply(text)
-	get_tree().change_scene("res://scenes/200mHurdles.tscn")
+	get_tree().change_scene("res://scenes/games/200mHurdles.tscn")
 
 func _on_PlayButton3_pressed():
 	name_apply(text)
-	get_tree().change_scene("res://scenes/Archery.tscn")
+	get_tree().change_scene("res://scenes/games/Archery.tscn")

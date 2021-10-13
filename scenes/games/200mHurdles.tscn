@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://scripts/Name.gd" type="Script" id=1]
-[ext_resource path="res://scripts/Stopwatch.gd" type="Script" id=2]
+[ext_resource path="res://scripts/hud/Name.gd" type="Script" id=1]
+[ext_resource path="res://scripts/hud/Stopwatch.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/PressStart.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://scripts/200mHurdles.gd" type="Script" id=4]
+[ext_resource path="res://scripts/games/200mHurdles.gd" type="Script" id=4]
 [ext_resource path="res://assets/backgrounds/HUD1.png" type="Texture" id=5]
 [ext_resource path="res://assets/backgrounds/HUD_speedmeter.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/0001.png" type="Texture" id=8]
-[ext_resource path="res://scenes/Hurdle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/props/Hurdle.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/sounds/event_start.mp3" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]

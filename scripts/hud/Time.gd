@@ -6,4 +6,4 @@ func _process(delta):
 func _on_Timer_timeout(): #Si le Timer est écoulé
 	Global.score = Global.player_score
 	Global.player_score = 0
-	get_tree().change_scene("res://scenes/Results.tscn")
+	get_tree().change_scene("res://scenes/menu/Results.tscn")

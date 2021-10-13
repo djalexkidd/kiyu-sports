@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Kiyu Sports"
-run/main_scene="res://scenes/NameEntry.tscn"
+run/main_scene="res://scenes/menu/NameEntry.tscn"
 boot_splash/image="res://assets/splash.png"
 boot_splash/use_filter=false
 config/icon="res://icon.png"

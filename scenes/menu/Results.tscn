@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/PressStart.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scripts/Results.gd" type="Script" id=2]
+[ext_resource path="res://scripts/menu/Results.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/world_record.mp3" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]

@@ -8,6 +8,6 @@ onready var character = 1
 func char_select():
 	match character:
 		1:
-			return "res://scenes/Kiyu.tscn"
+			return "res://scenes/characters/Kiyu.tscn"
 		2:
-			return "res://scenes/Roblox.tscn"
+			return "res://scenes/characters/Roblox.tscn"
