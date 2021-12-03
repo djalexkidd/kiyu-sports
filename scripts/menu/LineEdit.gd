@@ -5,9 +5,17 @@ var actual_resolution = OS.get_window_size()
 var set_position = true
 var global_position
 
+func _ready():
+	if Global.username != "kiyu" and Global.username != "boblox":
+		text = Global.username
+
 func name_apply(new_text):
 	if text == "":
-		text = "kiyu"
+		match Global.character:
+			1:
+				text = "kiyu"
+			2:
+				text = "boblox"
 	Global.username = text
 
 func reposition():

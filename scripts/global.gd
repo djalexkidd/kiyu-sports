@@ -1,6 +1,6 @@
 extends Node
 
-onready var username
+onready var username = ""
 onready var score
 onready var player_score = 0
 onready var character = 1
